@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta   charset    = "UTF-8">
+    <meta   http-equiv = "X-UA-Compatible" content = "IE=edge">
+    <meta   name       = "viewport" content = "width=device-width, initial-scale=1.0">
+    <meta   name       = "description" content="A la recherche d'ameublement ? Découvrez notre sélection
+                          de meubles, tables, chaises design, de bonne qualité." >
+    <script src        = "https://cdn.tailwindcss.com"></script>
+    <link   href       = "style.css" rel = "stylesheet">
+    <link   rel        = "preconnect" href = "https://fonts.googleapis.com">
+    <link   rel        = "preconnect" href = "https://fonts.gstatic.com" crossorigin>
+    <link   href       = "https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel = "stylesheet">
+    <title>My shop</title>
+</head>
+
+<!-- EN-TÊTE: https:   //www.hyperui.dev/components/marketing/navigations -->
+<header class = "bg-white">
+    <div    class = "mx-auto flex h-16 items-center gap-8 my-4">
+        <span   class = "sr-only">Home</span>
+        <img    class = "h-18 w-18" src = "img/Logo.png" alt = "Logo">
+         
+        <div class = "flex flex-1 items-center justify-end md:justify-between">
+            <nav class = "hidden md:block" aria-labelledby = "header-navigation">
+                <h2  class = "sr-only" id = "header-navigation">Header navigation</h2>
+                
+                <ul class = "flex items-center gap-6 text-sm">
+                    <li>
+                        <a class = "text-black transition hover:text-blue-700/75" href = "/index_my_shop.html">
+                            HOME
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a class = "text-black transition hover:text-blue-700/75" href = "/index_my_shop.html">
+                            SHOP
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a class = "text-black transition hover:text-blue-700/75" href = "/index_my_shop.html">
+                            MAGAZINE
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class = "flex items-center gap-4">
+                <!-- Affichage de l'icône CADDIE --> 
+                <div class = "sm:flex sm:gap-4">
+                    <a
+                    class = "block rounded-md px-5 py-2.5 text-sm font-medium text-white transition hover:bg-blue-700/75"
+                    href  = "/index_my_shop.html"
+                    >
+                    <img class = "h-6 w-6" src = "img/Cart Button.png" alt = "Mon caddie">
+                    </a>
+                
+                    <a
+                    class = "hidden rounded-md px-5 py-2.5 text-sm font-medium text-black transition hover:bg-blue-700/75 sm:block"
+                    href  = "/index_my_shop.html"
+                    >
+                    LOGIN
+                    </a>   
+                </div>
+        
+                <!-- Affichage de l'icône MENU sur la version mobile --> 
+                <button
+                    class = "block rounded p-2.5 text-black transition hover:text-blue-700/75 md:hidden"
+                    >
+                    <span class="sr-only">Menu qui s'affiche sur les mobiles</span>
+                    <svg
+                        xmlns        = "http://www.w3.org/2000/svg"
+                        class        = "h-5 w-5"
+                        fill         = "none"
+                        viewBox      = "0 0 24 24"
+                        stroke       = "currentColor"
+                        stroke-width = "2"
+                        >
+                    <path
+                        stroke-linecap  = "round"
+                        stroke-linejoin = "round"
+                        d               = "M4 6h16M4 12h16M4 18h16"
+                    />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div> 
+</header>
+
+<body>
+    <!-- CREATION DU GRID: 1 colonne pour version mobile et 4 pour version desktop -->
+    <div class = "grid grid-cols-1 md:grid-cols-4">
+         
+        <!-- LOUPE + BARRE DE RECHERCHE : zone à saisir -->   
+        <div class = "flex flex-row md:col-span-2">
+            <div class = "px-5 py-2 w-1/6">
+                <img alt   = "Search" src = "img/Search.png" class = "object-contain mt-6 h-80% md:h-full md:mt-3"/>
+            </div>
+            
+            <div   class = "py-2 text-left font-bold border-b-2 border-black text-xl w-5/6 mt-4">
+                <input class = w-full type = "text" name = "search" value = "Living room" aria-placeholder = "search" aria-labelledby="Search area"/>
+            </div>
+        </div>
+
+        <!-- BARRE DE RECHERCHE : inscription Powered by -->  
+        <div class = "flex py-2 justify-end text-sm md:border-b-2 border-black">
+            <p   class = "mt-4">Powered by <strong>Algolia</strong></p>
+            <img class = "object-contain h-5 w-5 mt-4 ml-5" alt = "Search" src = "img/Sajari Logo.png">
+        </div>
+        
+        <!-- MENU "BEST MATCH" -->
+        <div>
+            <details class = "group py-2 text-left font-bold border-b-2 border-gray-300 md:ml-4 md:mt-4">
+                <summary
+                    class = "flex cursor-pointer items-center rounded-lg px-4 py-2 text-black   hover:bg-blue-100 hover:text-gray-700"
+                    >
+                    <span class = "text-sm font-medium ">Best match</span>
+                
+                    <!-- Permet de créer la flèche -->
+                    <span
+                    class = "ml-auto shrink-0 transition duration-300 group-open:-rotate-180"
+                    >
+                        <svg
+                            xmlns   = "http://www.w3.org/2000/svg"
+                            class   = "h-5 w-5"
+                            viewBox = "0 0 20 20"
+                            fill    = "currentColor"
+                            >
+                            <path   
+                            fill-rule = "evenodd"
+                            d         = "M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            clip-rule = "evenodd"
+                            />
+                        </svg>
+                    </span>
+                </summary>
+
+                <!-- Permet de créer le sous-menu -->
+                <nav class = "mt-2 ml-8 flex flex-col space-y-1">
+                    <a
+                    href  = "/index_my_shop.html"
+                    class = "block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                    >
+                    Best match 1
+                    </a>
+                
+                    <a
+                    href  = "/index_my_shop.html"
+                    class = "block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                    >
+                    Best match 2
+                    </a>
+                </nav>
+            </details>
+        </div>
+
+        <!-- MENU "FILTERS" POUR VERSION MOBILE -->
+        <div>
+            <details class = "group py-2 text-left font-bold border-b-2 border-gray-300 mt-3 lg:hidden">
+                <summary
+                    class = "flex cursor-pointer items-center rounded-lg px-4 py-2 text-black hover:bg-blue-100 hover:text-gray-700"
+                    >
+                    <span class = "text-sm font-medium ">Filters</span>
+                    
+                    <span
+                        class = "ml-auto shrink-0 transition duration-300 group-open:-rotate-180"
+                        >
+                        <svg
+                            xmlns   = "http://www.w3.org/2000/svg"
+                            class   = "h-5 w-5"
+                            viewBox = "0 0 20 20"
+                            fill    = "currentColor"
+                            >
+                            <path   
+                            fill-rule = "evenodd"
+                            d         = "M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            clip-rule = "evenodd"
+                            />
+                        </svg>
+                    </span>
+                </summary>
+
+                <nav class = "mt-2 ml-8 flex flex-col space-y-1">
+                    <a
+                    href  = "/index_my_shop.html"
+                    class = "block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                    >
+                    Collection
+                    </a>
+
+                    <a
+                    href  = "/index_my_shop.html"
+                    class = "block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                    >
+                    Color
+                    </a>
+                </nav>
+            </details>
+        </div>
+
+    </div>
+
+    <!-- CREATION DES CARDS + MENU DEROULANT -->
+    <div class = "grid grid-cols-1 gap-4 md:grid-cols-4">
+        
+         
+        <!-- GRID BLOCK 1: MENU DEROULANT / CONSTRUIRE LE MENU VERTICAL: https:   //www.hyperui.dev/components/application-ui/vertical-menu -->
+        <div class = "items-center">
+            
+            <nav class = "hidden md:flex flex-col space-y-1 mt-8 gap-y-8"> 
+                <div
+                    class = "flex cursor-pointer items-center rounded-lg px-4 py-2 text-gray-400 hover:bg-blue-100 hover:text-gray-500"
+                    >
+                    <span class = "text-sm font-small margin-top:50px">FILTER BY</span>
+                </div>
+            
+                <!-- Menu et sous-menu Collection -->
+                <details class = "group border-b-4">
+                    <summary
+                        class = "flex cursor-pointer items-center rounded-lg px-4 py-2 text-black hover:bg-blue-100 hover:text-gray-700"
+                        >
+                        <span class = "text-sm font-medium">Collection</span>
+                        
+                        <span
+                            class = "ml-auto shrink-0 transition duration-300 group-open:-rotate-180"
+                            >
+                            <svg
+                                xmlns   = "http://www.w3.org/2000/svg"
+                                class   = "h-5 w-5"
+                                viewBox = "0 0 20 20"
+                                fill    = "currentColor"
+                                >
+                                <!-- Path: permet de créer le sous-menu déroulant -->
+                                <path   
+                                fill-rule = "evenodd"
+                                d         = "M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule = "evenodd"
+                                />
+                            </svg>
+                        </span>
+                    </summary>
+
+                    <nav class = "mt-2 ml-8 flex flex-col space-y-1">
+                        <a
+                        href  = "/index_my_shop.html"
+                        class = "block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                        >
+                        Collection texte 1
+                        </a>
+
+                        <a
+                        href  = "/index_my_shop.html"
+                        class = "block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                        >
+                        Collection texte 2
+                        </a>
+                    </nav>
+                </details>
+
+                <!-- Menu et sous-menu Color -->
+                <details class = "group border-b-4">
+                    <summary
+                        class = "flex cursor-pointer items-center rounded-lg px-4 py-2 text-black hover:bg-blue-100 hover:text-gray-700"
+                        >
+                        <span class = "text-sm font-medium"> Color</span>
+                        
+                        <span
+                            class = "ml-auto shrink-0 transition duration-300 group-open:-rotate-180"
+                            >
+                            <svg
+                                xmlns   = "http://www.w3.org/2000/svg"
+                                class   = "h-5 w-5"
+                                viewBox = "0 0 20 20"
+                                fill    = "currentColor"
+                                >
+                                <path
+                                fill-rule = "evenodd"
+                                d         = "M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule = "evenodd"
+                                />
+                            </svg>
+                        </span>
+                    </summary>
+
+                    <nav class = "mt-2 ml-8 flex flex-col space-y-1">
+                        <a
+                        href  = "/index_my_shop.html"
+                        class = "block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                        >
+                        Color texte 1
+                        </a>
+
+                        <a
+                        href  = "/index_my_shop.html"
+                        class = "block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                        >
+                        Color texte 2
+                        </a>
+                    </nav>
+                </details>
+
+                <!-- Menu et sous-menu Category -->
+                <details class = "group border-b-4">
+                    <summary
+                        class = "flex cursor-pointer items-center rounded-lg px-4 py-2 text-black hover:bg-blue-100 hover:text-gray-700"
+                        >
+                        <span class = "text-sm font-medium"> Category</span>
+                        
+                        <span
+                            class = "ml-auto shrink-0 transition duration-300 group-open:-rotate-180"
+                            >
+                            <svg
+                                xmlns   = "http://www.w3.org/2000/svg"
+                                class   = "h-5 w-5"
+                                viewBox = "0 0 20 20"
+                                fill    = "currentColor"
+                                >
+                                <path
+                                fill-rule = "evenodd"
+                                d         = "M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule = "evenodd"
+                                />
+                            </svg>
+                        </span>
+                    </summary>
+
+                    <nav class = "mt-2 ml-8 flex flex-col space-y-1">
+                        <a
+                        href  = "/index_my_shop.html"
+                        class = "block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                        >
+                        Category texte 1
+                        </a>
+
+                        <a
+                        href  = "/index_my_shop.html"
+                        class = "block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                        >
+                        Category texte 2
+                        </a>
+                    </nav>
+                </details>
+
+                <!-- Afficher la barre des prix: https://tailwindcomponents.com/component/range-slider -->
+                <div 
+                    class = "px-4 py-2 text-black">
+                    <span class = "text-sm font-medium">Price Range</span>
+                </div>
+                <div class = "py-1 relative min-w-full">
+                    <div class = "h-1 bg-gray-200 rounded-full">
+                        <div class = "absolute text-black ml-1 bottom-0 left-0 -mb-6">$0
+                        </div>
+                        <div class = "absolute text-black mr-1 bottom-0 right-0 -mb-6">$10,000+
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <!-- GRID BLOCK 2: INSERER LA 1ère IMAGE: https:   //www.hyperui.dev/components/ecommerce/cards -->  
+        <div>
+            <a href  = "/index_my_shop.html" title="retour page index" class = "block">
+                <div class = "flex justify">
+                    <strong class = "relative h-10 px-4 text-xs uppercase leading-6"></strong>
+                </div>
+                
+                <img
+                    alt   = "Coombes"
+                    src   = "img/toa-heftiba-FV3GConVSss-unsplash.jpg"
+                    class = "-mt-3 h-[350px] w-full object-cover sm:h-[450px]"
+                    />
+                
+                <div 
+                    class = "mt-4 text-sm text-gray-700 flex items-center justify-between font-medium">
+                    <p><strong>Coombes</strong></p>
+                    <p class = "text-xs uppercase tracking-wide">$2,600</p>
+                </div>
+                
+                <div 
+                    class = "mt-1 text-sm text-gray-500 flex items-center justify-between font-medium">
+                    <p>LOUNGE</p>
+                    
+                    <!-- INSERER LES ETOILES: https:   //tailwind-elements.com/docs/standard/components/rating/ -->
+                    <ul class = "flex justify-center">
+                        <li>
+                            <svg  aria-hidden = "true" focusable = "false" data-prefix = "fas" data-icon = "star" class = "w-4 text-black mr-1 mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                <path fill        = "currentColor" d = "M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                            </svg>
+                        </li>
+                        <li>
+                            <svg  aria-hidden = "true" focusable = "false" data-prefix = "fas" data-icon = "star" class = "w-4 text-black mr-1 mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                <path fill        = "currentColor" d = "M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                            </svg>
+                        </li>
+                        <li>
+                            <svg  aria-hidden = "true" focusable = "false" data-prefix = "fas" data-icon = "star" class = "w-4 text-black mr-1 mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                <path fill        = "currentColor" d = "M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                            </svg>
+                        </li>
+                        <li>
+                            <svg  aria-hidden = "true" focusable = "false" data-prefix = "far" data-icon = "star" class = "w-4 text-black mr-1 mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                <path fill        = "currentColor" d = "M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                            </svg>
+                        </li>
+                        <li>
+                            <svg  aria-hidden = "true" focusable = "false" data-prefix = "far" data-icon = "star" class = "w-4 text-black mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                <path fill        = "currentColor" d = "M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"></path>
+                            </svg>
+                        </li>
+                    </ul>
+                    
+                    <!-- INSERER LE CADDIE -->
+                    <p class = "text-xs uppercase tracking-wide">
+                        <a
+                        class = "block rounded-md px-5 py-2.5 mt-1 text-sm font-medium text-white transition hover:bg-blue-700/75"
+                        href  = "/index_my_shop.html" title="ajouter au caddie"
+                        >
+                        <img class = "h-6 w-6" src = "img/Cart Button.png" alt = "Mon caddie">
+                        </a>
+                    </p>
+                </div>
+            </a>
+        </div>
+
+    <!-- GRID BLOCK 3: INSERER LA 2ème IMAGE -->
+        <div>
+            <a href  = "/index_my_shop.html" title="retour page index" class = "block">
+                <div class = "flex justify">
+                    <strong class = "relative h-10 px-4 text-xs uppercase leading-6"></strong>
+                </div>
+                
+                <img
+                    alt   = "Keeve Set"
+                    src   = "img/tabitha-turner-rhcllVy2zBU-unsplash.jpg"
+                    class = "-mt-3 h-[350px] w-full object-cover sm:h-[450px]"
+                    />
+                
+                <div 
+                    class = "mt-4 text-sm text-gray-700 flex items-center justify-between font-medium">
+                    <p><strong>Keeve Set</strong></p>
+                    <p class = "text-xs uppercase tracking-wide">$590</p>
+                </div>
+                
+                <div 
+                    class = "mt-1 text-sm text-gray-500 flex items-center justify-between font-medium">
+                    <p>TABLE & CHAIRS</p>
+                    
+                    <!-- INSERER LES ETOILES: https:   //tailwind-elements.com/docs/standard/components/rating/ -->
+                    <ul class = "flex justify-center">
+                        <li>
+                            <svg  aria-hidden = "true" focusable = "false" data-prefix = "fas" data-icon = "star" class = "w-4 text-black mr-1 mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                <path fill        = "currentColor" d = "M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                            </svg>
+                        </li>
+                        <li>
+                            <svg  aria-hidden = "true" focusable = "false" data-prefix = "fas" data-icon = "star" class = "w-4 text-black mr-1 mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                <path fill        = "currentColor" d = "M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                            </svg>
+                        </li>
+                        <li>
+                            <svg  aria-hidden = "true" focusable = "false" data-prefix = "fas" data-icon = "star" class = "w-4 text-black mr-1 mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                <path fill        = "currentColor" d = "M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                            </svg>
+                        </li>
+                        <li>
+                            <svg  aria-hidden = "true" focusable = "false" data-prefix = "far" data-icon = "star" class = "w-4 text-black mr-1 mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                <path fill        = "currentColor" d = "M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                            </svg>
+                        </li>
+                        <li>
+                            <svg  aria-hidden = "true" focusable = "false" data-prefix = "far" data-icon = "star" class = "w-4 text-black mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                <path fill        = "currentColor" d = "M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"></path>
+                            </svg>
+                        </li>
+                    </ul>
+                    
+                    <!-- INSERER LE CADDIE -->
+                    <p class = "text-xs uppercase tracking-wide">
+                        <a
+                        class = "block rounded-md px-5 py-2.5 mt-1 text-sm font-medium text-white transition hover:bg-blue-700/75"
+                        href  = "/index_my_shop.html" title="ajouter au caddie"
+                        >
+                        <img class = "h-6 w-6" src = "img/Cart Button.png" alt = "Mon caddie">
+                        </a>
+                    </p>   
+                </div>
+            </a>
+        </div>
+
+    <!-- GRIP BLOCK 4: INSERER LA 3ème IMAGE -->
+        <div>
+            <a href  = "/index_my_shop.html" title="retour page index" class = "block">
+                <div    class = "flex justify">
+                    <strong class = "relative h-10 px-4 text-xs uppercase leading-6"></strong>
+                </div>
+                
+                <img
+                alt   = "Nillè"
+                src   = "img/sam-moghadam-khamseh-kvmdsTrGOBM-unsplash.jpg"
+                class = "-mt-3 h-[350px] w-full object-cover sm:h-[450px]"
+                />
+                
+                <div 
+                    class = "mt-4 text-sm text-gray-700 flex items-center justify-between font-medium">
+                    <p><strong>Nillè</strong></p>
+                    <p class = "text-xs uppercase tracking-wide">$950</p>
+                </div>
+                
+                <div 
+                    class = "mt-1 text-sm text-gray-500 flex items-center justify-between font-medium">
+                    <p>ARMCHAIR</p>
+                    
+                    <!-- INSERER LES ETOILES: https:   //tailwind-elements.com/docs/standard/components/rating/ -->
+                    <ul class = "flex justify-center">
+                        <li>
+                            <svg  aria-hidden = "true" focusable = "false" data-prefix = "fas" data-icon = "star" class = "w-4 text-black mr-1 mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                <path fill        = "currentColor" d = "M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                            </svg>
+                        </li>
+                        <li>
+                            <svg  aria-hidden = "true" focusable = "false" data-prefix = "fas" data-icon = "star" class = "w-4 text-black mr-1 mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                <path fill        = "currentColor" d = "M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                            </svg>
+                        </li>
+                        <li>
+                            <svg  aria-hidden = "true" focusable = "false" data-prefix = "fas" data-icon = "star" class = "w-4 text-black mr-1 mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                <path fill        = "currentColor" d = "M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path> 
+                            </svg>
+                        </li>
+                        <li>
+                            <svg  aria-hidden = "true" focusable = "false" data-prefix = "far" data-icon = "star" class = "w-4 text-black mr-1 mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                <path fill        = "currentColor" d = "M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                            </svg>
+                        </li>
+                        <li>
+                            <svg  aria-hidden = "true" focusable = "false" data-prefix = "far" data-icon = "star" class = "w-4 text-black mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                <path fill        = "currentColor" d = "M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                            </svg>
+                        </li>
+                    </ul>
+                    
+                    <!-- INSERER LE CADDIE -->
+                    <p 
+                        class = "text-xs uppercase tracking-wide">
+                        <a
+                        class = "block rounded-md px-5 py-2.5 mt-1 text-sm font-medium text-white transition hover:bg-blue-700/75"
+                        href  = "/index_my_shop.html" title="ajouter au caddie"
+                        >
+                        <img class = "h-6 w-6" src = "img/Cart Button.png" alt = "Mon caddie">
+                        </a>
+                    </p>
+                </div>
+            </a>
+        </div>
+
+    <!-- GRIP BLOCK 5: INSERER LA 4ème IMAGE -->
+            <div class = "hidden md:block">
+                <a href  = "/index_my_shop.html"  title="retour page index" class = "block">
+                    <div    class = "flex justify">
+                        <strong class = "relative h-10 px-4 text-xs uppercase leading-6"></strong>
+                    </div>
+                    
+                    <img
+                    alt   = "Blanko"
+                    src   = "img/alexandra-gorn-W5dsm9n6e3g-unsplash.jpg"
+                    class = "-mt-3 h-[350px] w-full object-cover sm:h-[450px]"
+                    />
+                    
+                    <div 
+                        class = "mt-4 text-sm text-gray-700 flex items-center justify-between font-medium">
+                        <p><strong>Blanko</strong></p>
+                        <p class = "text-xs uppercase tracking-wide">$90</p>
+                    </div>
+                    
+                    <div 
+                        class = "mt-1 text-sm text-gray-500 flex items-center justify-between font-medium">
+                        <p>SIDE TABLE</p>
+                        
+                        <!-- INSERER LES ETOILES: https:   //tailwind-elements.com/docs/standard/components/rating/ -->
+                        <ul class = "flex justify-center">
+                            <li>
+                                <svg  aria-hidden = "true" focusable = "false" data-prefix = "fas" data-icon = "star" class = "w-4 text-black mr-1 mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                    <path fill        = "currentColor" d = "M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                                </svg>
+                            </li>
+                            <li>
+                                <svg  aria-hidden = "true" focusable = "false" data-prefix = "fas" data-icon = "star" class = "w-4 text-black mr-1 mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                    <path fill        = "currentColor" d = "M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                                </svg>
+                            </li>
+                            <li>
+                                <svg  aria-hidden = "true" focusable = "false" data-prefix = "fas" data-icon = "star" class = "w-4 text-black mr-1 mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                    <path fill        = "currentColor" d = "M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                                </svg>
+                            </li>
+                            <li>
+                                <svg  aria-hidden = "true" focusable = "false" data-prefix = "far" data-icon = "star" class = "w-4 text-black mr-1 mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                    <path fill        = "currentColor" d = "M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                                </svg>
+                            </li>
+                            <li>
+                                <svg  aria-hidden = "true" focusable = "false" data-prefix = "far" data-icon = "star" class = "w-4 text-black mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                    <path fill        = "currentColor" d = "M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"></path>
+                                </svg>
+                            </li>
+                        </ul>
+                        
+                        <!-- INSERER LE CADDIE -->
+                        <p class = "text-xs uppercase tracking-wide">
+                            <a
+                            class = "block rounded-md px-5 py-2.5 mt-1 text-sm font-medium text-white transition hover:bg-blue-700/75"
+                            href  = "/index_my_shop.html" title="ajouter au caddie"
+                            >
+                            <img class = "h-6 w-6" src = "img/Cart Button.png" alt = "Mon caddie">
+                            </a>
+                        </p>
+                    </div>
+                </a>
+            </div>
+
+    <!-- GRIP BLOCK 6: INSERER LA 5ème IMAGE -->
+            <div class = "hidden md:block">
+                <a href  = "/index_my_shop.html" title="retour page index" class = "hidden md:block">
+                    <div    
+                        class = "flex justify">
+                        <strong class = "relative h-10 px-4 text-xs uppercase leading-6"></strong>
+                    </div>
+                    
+                    <img
+                    alt   = "Momo"
+                    src   = "img/javier-vinals-37tuUo-Oa-M-unsplash.jpg"
+                    class = "-mt-3 h-[350px] w-full object-cover sm:h-[450px]"
+                    />
+                    
+                    <div 
+                        class = "mt-4 text-sm text-gray-700 flex items-center justify-between font-medium">
+                        <p><strong>Momo</strong></p>
+                        <p class = "text-xs uppercase tracking-wide">$890</p>
+                    </div>
+                    
+                    <div 
+                        class = "mt-1 text-sm text-gray-500 flex items-center justify-between font-medium">
+                        <p>SHELVES</p>
+                        
+                        <!-- INSERER LES ETOILES: https:   //tailwind-elements.com/docs/standard/components/rating/ -->
+                        <ul class = "flex justify-center">
+                            <li>
+                                <svg  aria-hidden = "true" focusable = "false" data-prefix = "fas" data-icon = "star" class = "w-4 text-black mr-1 mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                    <path fill        = "currentColor" d = "M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                                </svg>
+                            </li>
+                            <li>
+                                <svg  aria-hidden = "true" focusable = "false" data-prefix = "fas" data-icon = "star" class = "w-4 text-black mr-1 mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                    <path fill        = "currentColor" d = "M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                                </svg>
+                            </li>
+                            <li>
+                                <svg  aria-hidden = "true" focusable = "false" data-prefix = "fas" data-icon = "star" class = "w-4 text-black mr-1 mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                    <path fill        = "currentColor" d = "M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                                </svg>
+                            </li>
+                            <li>
+                                <svg  aria-hidden = "true" focusable = "false" data-prefix = "far" data-icon = "star" class = "w-4 text-black mr-1 mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                    <path fill        = "currentColor" d = "M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                                </svg>
+                            </li>
+                            <li>
+                                <svg  aria-hidden = "true" focusable = "false" data-prefix = "far" data-icon = "star" class = "w-4 text-black mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                    <path fill        = "currentColor" d = "M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"></path>
+                                </svg>
+                            </li>
+                        </ul>
+                        
+                        <!-- INSERER LE CADDIE -->
+                        <p class = "text-xs uppercase tracking-wide">
+                            <a
+                            class = "block rounded-md px-5 py-2.5 mt-1 text-sm font-medium text-white transition hover:bg-blue-700/75"
+                            href  = "/index_my_shop.html" title="ajouter au caddie"
+                            >
+                            <img class = "h-6 w-6" src = "img/Cart Button.png" alt = "Mon caddie">
+                            </a>
+                        </p>
+                    </div>
+                </a>  
+            </div>
+
+    <!-- GRIP BLOCK 7: INSERER LA 6ème IMAGE -->
+            <div class = "hidden md:block">
+                <a href  = "/index_my_shop.html" title="retour page index" class = "hidden md:block">
+                    <div    
+                        class = "flex justify">
+                        <strong class = "relative h-10 px-4 text-xs uppercase leading-6"></strong>
+                    </div>
+                    
+                    <img
+                    alt   = "Momo"
+                    src   = "img/bruno-emmanuelle-8AYFUTzmyMg-unsplash.jpg"
+                    class = "-mt-3 h-[350px] w-full object-cover sm:h-[450px]"
+                    />
+                    
+                    <div 
+                        class = "mt-4 text-sm text-gray-700 flex items-center justify-between font-medium">
+                        <p><strong>Penemillé</strong></p>
+                        <p class = "text-xs uppercase tracking-wide">$120</p>
+                    </div>
+                      
+                    <div 
+                        class = "mt-1 text-sm text-gray-500 flex items-center justify-between font-medium">
+                        <p>CHAIR</p>
+                        
+                        <!-- INSERER LES ETOILES -->
+                        <ul class = "flex justify-center">
+                            <li>
+                                <svg  aria-hidden = "true" focusable = "false" data-prefix = "fas" data-icon = "star" class = "w-4 text-black mr-1 mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                    <path fill        = "currentColor" d = "M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                                </svg>
+                            </li>
+                            <li>
+                                <svg  aria-hidden = "true" focusable = "false" data-prefix = "fas" data-icon = "star" class = "w-4 text-black mr-1 mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                    <path fill        = "currentColor" d = "M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                                </svg>
+                            </li>
+                            <li>
+                                <svg  aria-hidden = "true" focusable = "false" data-prefix = "fas" data-icon = "star" class = "w-4 text-black mr-1 mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                    <path fill        = "currentColor" d = "M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                                </svg>
+                            </li>
+                            <li>
+                                <svg  aria-hidden = "true" focusable = "false" data-prefix = "far" data-icon = "star" class = "w-4 text-black mr-1 mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                    <path fill        = "currentColor" d = "M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                                </svg>
+                            </li>
+                            <li>
+                                <svg  aria-hidden = "true" focusable = "false" data-prefix = "far" data-icon = "star" class = "w-4 text-black mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                    <path fill        = "currentColor" d = "M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"></path>
+                                </svg>
+                            </li>
+                        </ul>
+                        
+                        <!-- INSERER LE CADDIE -->
+                        <p 
+                            class = "text-xs uppercase tracking-wide">
+                            <a
+                            class = "block rounded-md px-5 py-2.5 mt-1 text-sm font-medium text-white transition hover:bg-blue-700/75"
+                            href  = "/index_my_shop.html" title="ajouter au caddie"
+                            >
+                            <img class = "h-6 w-6" src = "img/Cart Button.png" alt = "Mon caddie">
+                            </a>
+                        </p> 
+                    </div>
+                </a>  
+            </div>
+
+    <!-- GRIP BLOCK 8: INSERER LA 7ème IMAGE -->
+            <div class = "hidden md:block">
+                <a href  = "/index_my_shop.html" title="retour page index" class = "hidden md:block">
+                    <div    
+                        class = "flex justify">
+                        <strong class = "relative h-10 px-4 text-xs uppercase leading-6"></strong>
+                    </div>
+                    
+                    <img
+                    alt   = "Momo"
+                    src   = "img/alexandru-acea-Zg9R__O-8fM-unsplash.jpg"
+                    class = "-mt-3 h-[350px] w-full object-cover sm:h-[450px]"
+                    />
+                    
+                    <div 
+                        class = "mt-4 text-sm text-gray-700 flex items-center justify-between font-medium">
+                        <p><strong>Kappu</strong></p>
+                        <p class = "text-xs uppercase tracking-wide">$420</p>
+                    </div>
+                    
+                    <div 
+                        class = "mt-1 text-sm text-gray-500 flex items-center justify-between font-medium">
+                        <p>SHELVES</p>
+                        
+                        <!-- INSERER LES ETOILES -->
+                        <ul class = "flex justify-center">
+                            <li>
+                                <svg  aria-hidden = "true" focusable = "false" data-prefix = "fas" data-icon = "star" class = "w-4 text-black mr-1 mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                    <path fill        = "currentColor" d = "M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                                </svg>
+                            </li>
+                            <li>
+                                <svg  aria-hidden = "true" focusable = "false" data-prefix = "fas" data-icon = "star" class = "w-4 text-black mr-1 mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                    <path fill        = "currentColor" d = "M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                                </svg>
+                            </li>
+                            <li>
+                                <svg  aria-hidden = "true" focusable = "false" data-prefix = "fas" data-icon = "star" class = "w-4 text-black mr-1 mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                    <path fill        = "currentColor" d = "M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>  
+                                </svg>
+                            </li>
+                            <li>
+                                <svg  aria-hidden = "true" focusable = "false" data-prefix = "far" data-icon = "star" class = "w-4 text-black mr-1 mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                    <path fill        = "currentColor" d = "M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                                </svg>
+                            </li>
+                            <li>
+                                <svg  aria-hidden = "true" focusable = "false" data-prefix = "far" data-icon = "star" class = "w-4 text-black mt-1" role = "img" xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 576 512">
+                                    <path fill        = "currentColor" d = "M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"></path>
+                                </svg>
+                            </li>
+                        </ul>
+                           
+                        <!-- INSERER LE CADDIE -->
+                        <p 
+                            class = "text-xs uppercase tracking-wide">
+                            <a
+                            class = "block rounded-md px-5 py-2.5 mt-1 text-sm font-medium text-white transition hover:bg-blue-700/75"
+                            href  = "/index_my_shop.html" title="ajouter au caddie"
+                            >
+                            <img class = "h-6 w-6" src = "img/Cart Button.png" alt = "Mon caddie">
+                            </a>
+                        </p>  
+                    </div>
+                </a>   
+            </div>
+</body>
+
+<!-- PAGINATION -->  
+<footer>
+    <ol class = "flex justify-center gap-10 text-xs font-medium md:text-sm  lg:justify-start">    
+        <!-- flêche de début de pagination -->
+        <!-- <li>
+            <a
+                href  = "/index_my_shop.html" title="flêche début pagination"
+                class = "inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100"
+                >
+                <svg
+                    xmlns   = "http://www.w3.org/2000/svg"
+                    class   = "h-3 w-3"
+                    viewBox = "0 0 20 20"
+                    fill    = "currentColor"
+                    >
+                <path
+                fill-rule = "evenodd"
+                d         = "M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                clip-rule = "evenodd"
+                />
+                </svg>
+            </a>
+        </li> -->
+
+        <!-- Numérotation des pages de 1 à 10 -->
+        <li>
+            <a
+            href  = "/index_my_shop.html"
+            class = "block h-8 w-8 border-black text-center bg-black leading-8 text-white"
+            >
+            1
+            </a>
+        </li>
+
+        <li>
+            <a
+            href  = "/index_my_shop.html"
+            class = "block h-8 w-8 border-gray-100 text-center bg-white leading-8 text-black"
+            >
+            2
+            </a>
+        </li>
+
+        <li>
+            <a
+            href  = "/index_my_shop.html"
+            class = "block h-8 w-8 border-gray-100 text-center bg-white leading-8 text-black"
+            >
+            3
+            </a>
+        </li>
+
+        <li>
+            <a
+            href  = "/index_my_shop.html"
+            class = "block h-8 w-8 border-gray-100 text-center bg-white leading-8 text-black"
+            >
+            4
+            </a>
+        </li>
+
+        <li class = "hidden lg:block">
+            <a
+            href  = "/index_my_shop.html"
+            class = "block h-8 w-8 border-gray-100 text-center bg-white leading-8 text-black"
+            >
+            5
+            </a>
+        </li>
+
+        <li class = "hidden lg:block">
+            <a
+            href  = "/index_my_shop.html"
+            class = "block h-8 w-8 border-gray-100 text-center bg-white leading-8 text-black"
+            >
+            6
+            </a>
+        </li>
+
+        <li class = "hidden lg:block">
+            <a
+            href  = "/index_my_shop.html"
+            class = "block h-8 w-8 border-gray-100 text-center bg-white leading-8 text-black"
+            >
+            7
+            </a>
+        </li>
+
+        <li class = "hidden lg:block">
+            <a
+            href  = "/index_my_shop.html"
+            class = "block h-8 w-8 border-gray-100 text-center bg-white leading-8 text-black"
+            >
+            8
+            </a>
+        </li>
+
+        <li class = "hidden lg:block">
+            <a
+            href  = "/index_my_shop.html"
+            class = "block h-8 w-8 border-gray-100 text-center bg-white leading-8 text-black"
+            >
+            9
+            </a>
+        </li>
+
+        <li class = "hidden lg:block">
+            <a
+            href  = "/index_my_shop.html"
+            class = "block h-8 w-8 border-gray-100 text-center bg-white leading-8 text-black"
+            >
+            10
+            </a>
+        </li>
+
+        <!-- flêche de fin de pagination -->
+        <li>
+            <a
+                href  = "/index_my_shop.html" title="flêche fin de pagination"
+                class = "inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100"
+                >
+                <svg
+                    xmlns   = "http://www.w3.org/2000/svg"
+                    class   = "h-3 w-3"
+                    viewBox = "0 0 20 20"
+                    fill    = "currentColor"
+                    >
+                <path
+                fill-rule = "evenodd"
+                d         = "M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                clip-rule = "evenodd"
+                />
+                </svg>
+            </a>
+        </li>
+
+    </ol>
+</footer>
+
+</html>
